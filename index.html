@@ -1,11 +1,71 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8">
     <title>Hallo</title>
+    <link rel="stylesheet" href="./main.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
+
   <body>
-    <h1>Hallo Creadi</h1>
-    <p>Paragraph</p>
+    <div id="app">
+      <h1>{{ message }}</h1>
+      <button v-on:click="reverseMessage">Umdrehen</button>
+
+
+      <h2>Uhrzeit: {{ time }}</h2>
+      <button v-on:click="getTime">Zeit auslesen</button>
+
+      <ul>
+        <li v-for="user in users">{{ user }}</li>
+      </ul>
+
+      <ul>
+        <li v-for="post in posts">
+          <img :src="post.avatar" />
+          <h2>{{ post.username}}</h2>
+          <img :src="post.image" />
+        </li>
+      </ul>
+      <img src="./staub.jpg" alt="">
+      <img src="./hacker.jpg" alt="">
+      <p>Text Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text</p>
+      <p>Text Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Tex</p>
+      <p>Text Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Tex</p>
+      <p>Text Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Tex</p>
+
+
+      <img src="./bambus.jpg" alt="">
+      <p>Text Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Tex</p>
+      <p>Text Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Text ext Text Text Text Text Text Text Text Tex</p>
+      <img src="./hi.jpg" alt="">
+
+    </div>
   </body>
+
+<script>
+var app = new Vue({
+  el: '#app',
+  data: {
+    message: 'Hello Vue!',
+    time: 'Weiss ich nicht',
+    users: ['Cecile', 'Anders', 'Desiree'],
+    posts: [{
+      username: 'clemens',
+      avatar: 'https://scontent-frt3-2.cdninstagram.com/vp/4aed9915fdaff22c53b87a4ebbc79efe/5BAA0891/t51.2885-19/s150x150/22794133_157804468153340_3722564888359337984_n.jpg',
+      image: 'https://scontent-frt3-2.cdninstagram.com/vp/f5862848f72a14b550d5c407b0a2735a/5BB67671/t51.2885-15/s640x640/sh0.08/e35/c180.0.720.720/33941067_1725729564175880_583820492297732096_n.jpg'
+    }]
+  },
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('')
+    },
+    getTime: function () {
+      this.time = new Date()
+    }
+  }
+})
+</script>
+
 </html>
